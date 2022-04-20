@@ -2,7 +2,7 @@
 
 class Arret :
     
-    def __init__(self, nom, lst_arret_suivant):
+    def __init__(self, nom):
         
         """
         Constructeur de la classe Arret
@@ -16,13 +16,7 @@ class Arret :
         """
 
         self.nom = nom
-        self.lst_arret_suivant = lst_arret_suivant
-
-
-    """def __str__(self):
-        print(self.nom + "\n")
-        for i in self.lst_arret_suivant :
-            print(i)"""
+        self.lst_arret_suivant = []
 
     def get_nom(self):
         return self.nom
@@ -34,18 +28,6 @@ class Arret :
         self.lst_arret_suivant.append(Arret)
 
     def father(self,Ligne):
-        """
-        Méthode pour récupérer un parent
-        
-        Parameters
-        ----------
-        Reseau : Arbre qui content l'Arret
-
-        Returns
-        -----------
-        Arret : Arret
-            Père de L'arret
-        """
 
         for n in Ligne.Lst_Arret:
             if self in n.lst_arret_suivant  :
