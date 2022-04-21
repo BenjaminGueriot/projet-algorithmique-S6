@@ -13,7 +13,7 @@ class Lignes:
         ----------
         ArretDepart : Arret
             Depart de l'abre
-        Lst_Arret : Arret[] 
+        Lst_Arret : Arret[]
             Liste des Arret de l'arbre      
         """
         self.ArretDepart = ArretDepart

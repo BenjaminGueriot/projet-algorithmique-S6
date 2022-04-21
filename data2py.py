@@ -2,7 +2,6 @@
 #-*-coding:utf-8-*-
 
 data_file_name = '1_Poisy-ParcDesGlaisins.txt'
-#data_file_name = 'data/2_Piscine-Patinoire_Campus.txt'
 
 try:
     with open(data_file_name, 'r') as f:

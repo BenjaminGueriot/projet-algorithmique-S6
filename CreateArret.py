@@ -40,4 +40,4 @@ def creation_arret():
 
     #print(dic.items())
 
-    print((dic.get("LYCÃ‰E_DE_POISY")).get_lst_arret_suivant()[0])
+    print(((dic.get("LYCÃ‰E_DE_POISY")).get_lst_arret_suivant()[0]).get_lst_arret_suivant()[0].get_nom())

@@ -1,9 +1,5 @@
 #-*-coding:utf-8-*-
-
-from Arret import Arret
-from Lignes import Lignes
-import data2py as data
-import data2py2 as data2
+import CreateArret as CA
 
 #print(data.content)
 #print(data.slited_content)"""
@@ -13,5 +9,7 @@ import data2py2 as data2
 #print(data.regular_date_go.keys())
 #print(data.regular_date_go.items())
 #print(data.regular_date_go)
+
+CA.creation_arret()
 
 
