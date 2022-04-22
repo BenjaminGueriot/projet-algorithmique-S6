@@ -1,15 +1,22 @@
 #-*-coding:utf-8-*-
 import CreateArret as CA
+from Arret import Arret
+from Lignes import Lignes
+import data2py as data
+import data2py2 as data2
 
-#print(data.content)
-#print(data.slited_content)"""
-#print(data.regular_path.split(" N "))
 
-#print(data.regular_date_go.get("LYCÃ‰E_DE_POISY"))
-#print(data.regular_date_go.keys())
-#print(data.regular_date_go.items())
-#print(data.regular_date_go)
+dic_arret = CA.creation_arrets()
+dic_ligne = CA.creation_lignes()
 
-CA.creation_arret()
+#print(((dic_arret.get("GARE")).get_lst_arret_suivant()[0]).get_nom())
+#print(((dic_arret.get("GARE")).get_lst_arret_suivant()[1]).get_nom())
+#print(dic_arret.get("GARE").get_horaire("special_go",1))
+#print(dic_arret.get("GARE").get_horaire("regular_go",1))
+#print(dic_arret.get("GARE").get_horaire("regular_go",2))
+
+#print(dic_ligne.get("Ligne1").get_Lst_Arret()[11].is_leaf())
+
+
 
 
