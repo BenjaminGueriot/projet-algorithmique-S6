@@ -21,6 +21,7 @@ for arret in dic_ligne.get("Ligne2").get_Lst_Arret():
 """
 
 #print(dic_ligne.get("Ligne1").get_Lst_Arret().is_leaf())
+#print(dic_ligne.get("Ligne1").get_Lst_Arret()[1].father(dic_ligne.get("Ligne1")).get_nom())
 
 
 
