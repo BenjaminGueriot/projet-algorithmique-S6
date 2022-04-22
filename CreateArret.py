@@ -37,6 +37,7 @@ def creation_arrets():
             
         if lst_arret2[i] not in dic :
             dic2[lst_arret2[i]] = Arret(lst_arret2[i])
+            Ligne2_lst_Arret.append(dic2[lst_arret2[i]])
         else:
             dic2[lst_arret2[i]] = dic.get(lst_arret2[i])
             Ligne2_lst_Arret.append(dic[lst_arret2[i]])

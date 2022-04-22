@@ -15,7 +15,12 @@ dic_ligne = CA.creation_lignes()
 #print(dic_arret.get("GARE").get_horaire("regular_go",1))
 #print(dic_arret.get("GARE").get_horaire("regular_go",2))
 
-#print(dic_ligne.get("Ligne1").get_Lst_Arret()[11].is_leaf())
+"""
+for arret in dic_ligne.get("Ligne2").get_Lst_Arret():
+    print(arret.get_nom())
+"""
+
+#print(dic_ligne.get("Ligne1").get_Lst_Arret().is_leaf())
 
 
 
