@@ -15,7 +15,7 @@ class Arret :
             Liste d'arret suivant
              
         """
-
+        
         self.nom = nom
         self.dic_horaire = {}
         self.lst_arret_suivant = []
