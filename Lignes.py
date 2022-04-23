@@ -75,3 +75,4 @@ class Lignes:
 
         dfs([self],dic_ligne,count_route,arretDebut,arretFin,start,lst_routes)
         print(dic_route)
+        return dic_route
