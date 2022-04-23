@@ -1,28 +1,40 @@
 #!/usr/bin/python3
 #-*-coding:utf-8-*-
 
-data_file_name = '1_Poisy-ParcDesGlaisins.txt'
+def read_data(data_file_name):
 
-try:
-    with open(data_file_name, 'r') as f:
-        content = f.read()
-except OSError:
-    # 'File not found' error message.
-    print("File not found")
+    #'1_Poisy-ParcDesGlaisins.txt'
 
-def dates2dic(dates):
-    dic = {}
-    splitted_dates = dates.split("\n")
-    #print(splitted_dates)
-    for stop_dates in splitted_dates:
-        tmp = stop_dates.split(" ")
-        dic[tmp[0]] = tmp[1:]
-    return dic
+    try:
+        with open(data_file_name, 'r') as f:
+            content = f.read()
+    except OSError:
+        # 'File not found' error message.
+        print("File not found")
 
-slited_content = content.split("\n\n")
-regular_path = slited_content[0]
-regular_date_go = dates2dic(slited_content[1])
-regular_date_back = dates2dic(slited_content[2])
-we_holidays_path = slited_content[3]
-we_holidays_date_go = dates2dic(slited_content[4])
-we_holidays_date_back = dates2dic(slited_content[5])
+    def dates2dic(dates):
+        dic = {}
+        splitted_dates = dates.split("\n")
+        #print(splitted_dates)
+        for stop_dates in splitted_dates:
+            tmp = stop_dates.split(" ")
+            dic[tmp[0]] = tmp[1:]
+        return dic
+
+    slited_content = content.split("\n\n")
+    regular_path = slited_content[0]
+    regular_date_go = dates2dic(slited_content[1])
+    regular_date_back = dates2dic(slited_content[2])
+    we_holidays_path = slited_content[3]
+    we_holidays_date_go = dates2dic(slited_content[4])
+    we_holidays_date_back = dates2dic(slited_content[5])
+
+    return {
+        "slited_content" : slited_content, 
+        "regular_path": regular_path,
+        "regular_date_go": regular_date_go,
+        "regular_date_back": regular_date_back,
+        "we_holidays_path": we_holidays_path,
+        "we_holidays_date_go": we_holidays_date_go,
+        "we_holidays_date_back": we_holidays_date_back
+    }
