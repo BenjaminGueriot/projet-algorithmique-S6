@@ -57,17 +57,17 @@ def creation_arrets():
 
 def creation_lignes():
     dic_ligne = {}
-    dic_ligne["Ligne1"] = Lignes(get_arret_ligne(data.regular_date_go)[0],Ligne_lst_Arret)
-    dic_ligne["Ligne2"] = Lignes(get_arret_ligne(data2.regular_date_go)[0],Ligne2_lst_Arret)
+    dic_ligne["Ligne1"] = Lignes(dic.get(get_arret_ligne(data.regular_date_go)[0]),Ligne_lst_Arret)
+    dic_ligne["Ligne2"] = Lignes(dic.get(get_arret_ligne(data.regular_date_go)[0]),Ligne2_lst_Arret)
     return dic_ligne
 
 
 #Retourne la liste de tout les arrets de la ligne selon la période
 def get_arret_ligne(donnees):
-    lst_arret = []
+    liste_arret = []
     for item in donnees.keys() :
-        lst_arret.append(item)
-    return lst_arret
+        liste_arret.append(item)
+    return liste_arret
 
 
 #Fusionne deux dictionnaires
