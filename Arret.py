@@ -47,9 +47,7 @@ class Arret :
         if(periode == "special_back"):
             return self.dic_horaire.get("Ligne"+ str(ligne)).get("special_back")
 
-
-        
-        return self.dic_horaire
+        return None
     
     def father(self,Ligne):
 
