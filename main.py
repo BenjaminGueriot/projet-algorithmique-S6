@@ -1,9 +1,9 @@
 #-*-coding:utf-8-*-
+from datetime import datetime
+import Method
 import CreateArret as CA
 from Arret import Arret
 from Lignes import Lignes
-import data2py as data
-import data2py2 as data2
 
 
 dic_arret = CA.creation_arrets()
@@ -24,5 +24,7 @@ for arret in dic_ligne.get("Ligne2").get_Lst_Arret():
 #print(dic_ligne.get("Ligne1").get_Lst_Arret()[1].father(dic_ligne.get("Ligne1")).get_nom())
 
 
+#date = int(str(datetime.date(datetime.now()))[5:7] + str(datetime.date(datetime.now()))[8:10])
+#print(Method.is_holiday(date))
 
-
+dic_ligne.get("Ligne1").display_depth(dic_ligne,dic_arret.get("Chorus"),dic_arret.get("Ponchy"))
