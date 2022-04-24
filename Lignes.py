@@ -1,10 +1,11 @@
 #-*-coding:utf-8-*-
 
 from Arret import Arret
+import Method
 
 class Lignes:
     
-    def __init__(self, ArretDepart,Lst_Arret):
+    def __init__(self, ArretDepart,Lst_Arret,numero):
         
         """
         Constructeur de la classe ArbreArret
@@ -16,7 +17,7 @@ class Lignes:
         Lst_Arret : Arret[]
             Liste des Arret de l'arbre      
         """
-
+        self.numero = numero
         self.ArretDepart = ArretDepart
         self.Lst_Arret = Lst_Arret
 
@@ -29,22 +30,7 @@ class Lignes:
     def add_Lst_Arret(self,Arret):
         self.Lst_Arret.append(Arret)
 
-    def display_depth(self,dic_ligne,arretDebut,arretFin):
-        
-        """
-        Méthode pour réaliser une recherche en profondeur 
-        
-        Parameters
-        ----------
-        forest : RTree[]
-            Arborescences qu'il reste à explorer
-        nodes : Node[]
-            Noeuds trouvés
-            
-        Returns
-        ----------
-        nodes : Node[]
-        """
+    def get_all_path(self,dic_ligne,arretDebut,arretFin):
 
         count_route = 0
         dic_route = {}
@@ -69,10 +55,33 @@ class Lignes:
                         lst_routes = []
                         new_forest = forest[1:]
                     else :
-                        new_forest = [Lignes(arret, self.Lst_Arret) for arret in ligne.ArretDepart.get_lst_arret_suivant()] + forest[1:]
+                        new_forest = [Lignes(arret, self.Lst_Arret,None) for arret in ligne.ArretDepart.get_lst_arret_suivant()] + forest[1:]
+                        if len(ligne.ArretDepart.get_lst_arret_suivant()) > 1:
+                            pass
 
                     dfs(new_forest,dic_ligne,count_route,arretDebut,arretFin,start,lst_routes)
 
         dfs([self],dic_ligne,count_route,arretDebut,arretFin,start,lst_routes)
         print(dic_route)
         return dic_route
+
+    def nextBus(self,arret,timeDeparture,periode):
+            
+        count = 0
+        time = Method.hdigit2min(arret.get_horaire(periode,self.numero)[0])
+        while time < timeDeparture or count > len(arret.get_horaire(periode,self.numero)):
+            count += 1
+            time = Method.hdigit2min(arret.get_horaire(periode,self.numero)[count])
+        return Method.hdigit2min(arret.get_horaire(periode,self.numero)[count])
+
+
+    def time_between_arret(self,heure,arret1,periode):
+       
+        if len(arret1.get_lst_arret_suivant()) == 1:
+            arret2 = arret1.get_lst_arret_suivant()[0]
+        else:
+            arret2 = arret1.get_lst_arret_suivant()[self.numero-1]
+
+        time = self.nextBus(arret2,self.nextBus(arret1,heure,periode)+1,periode) - self.nextBus(arret1,heure,periode)
+        
+        return time
