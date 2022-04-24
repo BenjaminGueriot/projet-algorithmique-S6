@@ -15,3 +15,16 @@ def is_holiday(date):
     
     return False
 
+def hdigit2min(heure):
+    if len(heure) == 5:
+        heurefin = heure[0] + heure[1]
+        minfin = heure[3:]
+    else:
+        heurefin = heure[0]
+        minfin = heure[2:]
+    
+    return int(60*int(heurefin) + int(minfin))
+
+def shortest_path(dic_routes):
+    for e in dic_routes.keys():
+        dic_routes.get(e)

@@ -1,8 +1,6 @@
 from Arret import Arret
 from Lignes import Lignes
 import data2py as data
-import data2py2 as data2
-
 
 
 dic_ligne = {}
@@ -21,7 +19,8 @@ def creation_arrets(data_file,dic,nb_ligne):
         Ligne_lst_Arret.append(dic[lst_arret[i]])
 
         dic.get(lst_arret[i]).add_horaire(data_file["regular_date_go"].get(lst_arret[i]),data_file["regular_date_back"].get(lst_arret[i]),
-                                        data_file["we_holidays_date_go"].get(lst_arret[i]),data_file["we_holidays_date_back"].get(lst_arret[i]))
+                                        data_file["we_holidays_date_go"].get(lst_arret[i]),data_file["we_holidays_date_back"].get(lst_arret[i]),
+                                        nb_ligne)
 
     for i in range(0,len(lst_arret)):
 
@@ -29,7 +28,7 @@ def creation_arrets(data_file,dic,nb_ligne):
             
             dic.get(lst_arret[i]).add_lst_arret_suivant(dic.get(lst_arret[i+1]))
 
-    dic_ligne["Ligne" + str(nb_ligne)] = Lignes(dic.get(get_arret_ligne(data_file["regular_date_go"])[0]),Ligne_lst_Arret)
+    dic_ligne["Ligne" + str(nb_ligne)] = Lignes(dic.get(get_arret_ligne(data_file["regular_date_go"])[0]),Ligne_lst_Arret,nb_ligne)
 
     return { "dic_arret" : dic,
             "dic_ligne" : dic_ligne

@@ -15,11 +15,10 @@ class Arret :
             Liste d'arret suivant
              
         """
-        
+
         self.nom = nom
         self.dic_horaire = {}
         self.lst_arret_suivant = []
-        self.nb_ligne = 0
 
     def get_nom(self):
         return self.nom
@@ -30,9 +29,8 @@ class Arret :
     def add_lst_arret_suivant(self,Arret):
         self.lst_arret_suivant.append(Arret)
 
-    def add_horaire(self,h_regular_go,h_regular_back,h_special_go,h_special_back):
-        self.nb_ligne += 1
-        self.dic_horaire[("Ligne" + str(self.nb_ligne))] = { "regular_go" : h_regular_go, 
+    def add_horaire(self,h_regular_go,h_regular_back,h_special_go,h_special_back,nb_ligne):
+        self.dic_horaire[("Ligne" + str(nb_ligne))] = { "regular_go" : h_regular_go, 
                                                                 "regular_back" : h_regular_back, 
                                                                 "special_go" : h_special_go, 
                                                                 "special_back" : h_special_back }
