@@ -18,16 +18,32 @@ class Arret :
 
         self.nom = nom
         self.dic_horaire = {}
-        self.lst_arret_suivant = []
+        self.lst_arret_suivant = {}
 
     def get_nom(self):
         return self.nom
     
-    def get_lst_arret_suivant(self):
-        return self.lst_arret_suivant
+    def get_lst_arrets_suivant(self):
+        for i in range(0,len(self.lst_arret_suivant.keys())):
+            if self.lst_arret_suivant.values():
+                list(self.lst_arret_suivant.values())
+        return list(self.lst_arret_suivant.values())
 
-    def add_lst_arret_suivant(self,Arret):
-        self.lst_arret_suivant.append(Arret)
+    def get_arret_suivant(self,ligne):
+
+        if ligne.direction == "back":
+            
+            arret = self.lst_arret_suivant.get(str((ligne.numero))+"_back")
+            return arret
+
+        if ligne.direction == "go":
+            
+            arret = self.lst_arret_suivant.get(str((ligne.numero)))
+            return arret
+        
+
+    def add_lst_arret_suivant(self,Arret,ligne):
+        self.lst_arret_suivant[ligne] = Arret
 
     def add_horaire(self,h_regular_go,h_regular_back,h_special_go,h_special_back,nb_ligne):
         self.dic_horaire[("Ligne" + str(nb_ligne))] = { "regular_go" : h_regular_go, 
@@ -54,6 +70,23 @@ class Arret :
                 return n
         return None
 
-    def is_leaf(self):
-        return not self.lst_arret_suivant
+    def is_leaf(self,ligne):
 
+        lst_arrets = []
+        if ligne.direction == "back":
+            for i in range(0,len(self.lst_arret_suivant.keys())):
+                if self.lst_arret_suivant.get(str((ligne.numero+i))+"_back"):
+                    lst_arrets.append(self.lst_arret_suivant.get(str((ligne.numero+i))+"_back"))
+            if lst_arrets == []:
+                return True
+            else:
+                return False
+
+        if ligne.direction == "go":
+            for i in range(0,len(self.lst_arret_suivant.keys())):
+                if self.lst_arret_suivant.get(str((ligne.numero+i))):
+                    lst_arrets.append(self.lst_arret_suivant.get(str((ligne.numero+i))))
+            if lst_arrets == []:
+                return True
+            else:
+                return False

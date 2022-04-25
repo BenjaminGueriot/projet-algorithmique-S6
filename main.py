@@ -5,6 +5,7 @@ import Method
 import CreateArret as CA
 from Arret import Arret
 from Lignes import Lignes
+from Reseau import *
 
 lst_files = ['1_Poisy-ParcDesGlaisins.txt','2_Piscine-Patinoire_Campus.txt']
 
@@ -19,22 +20,22 @@ for files in lst_files:
 
 
 
+#print((dic_arret.get("GARE")).get_lst_arrets_suivant().get("1_back").get_nom())
 
+#print((dic_arret.get("GARE")).get_arret_suivant(dic_ligne.get("Ligne2_back")).get_nom())
 
-#print((dic_arret.get("GARE")).get_lst_arret_suivant()[0])
-#print(((dic_arret.get("GARE")).get_lst_arret_suivant()[0]).get_nom())
-#print(((dic_arret.get("GARE")).get_lst_arret_suivant()[1]).get_nom())
 #print(dic_arret.get("GARE").get_horaire("special_go",1))
 #print(dic_arret.get("GARE").get_horaire("regular_go",1))
 #print(Method.hdigit2min(dic_arret.get("GARE").get_horaire("regular_go",2)[5]))
 
 """
-for arret in dic_ligne.get("Ligne2").get_Lst_Arret():
+for arret in dic_ligne.get("Ligne2_back").get_Lst_Arret():
     print(arret.get_nom())
 """
 
-#print(dic_ligne.get("Ligne1").get_Lst_Arret().is_leaf())
-#print(dic_ligne.get("Ligne1").get_Lst_Arret()[1].father(dic_ligne.get("Ligne1")).get_nom())
+#print(dic_ligne)
+
+#print(dic_ligne.get("Ligne1").get_Lst_Arret()[0].is_leaf(dic_ligne.get("Ligne1")))
 
 
 #date = int(str(datetime.date(datetime.now()))[5:7] + str(datetime.date(datetime.now()))[8:10])
@@ -42,6 +43,18 @@ for arret in dic_ligne.get("Ligne2").get_Lst_Arret():
 
 #dic_ligne.get("Ligne2").get_all_path(dic_ligne,dic_arret.get("Courier"),dic_arret.get("Ponchy"))
 
-#dic_ligne.get("Ligne2").time_between_arret(heure,arret1,arret2,periode)
 
-#print(dic_ligne.get("Ligne1").time_between_arret(441,dic_arret.get("Vernod"),"regular_go"))
+#print(dic_ligne.get("Ligne1").time_between_arret(406,dic_arret.get("Vernod"),"regular_back"))
+
+Sybra = Reseau(list(dic_ligne.values()))
+
+dico = Sybra.shortestDijkstra(dic_arret.get("Courier"),dic_arret.get("Ponchy"))
+
+
+print(dico)
+
+"""
+for e in dico.keys():
+    print(e.get_nom())
+    print(dico.get(e))
+"""
