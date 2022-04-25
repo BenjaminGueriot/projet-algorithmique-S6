@@ -25,6 +25,19 @@ def hdigit2min(heure):
     
     return int(60*int(heurefin) + int(minfin))
 
-def shortest_path(dic_routes):
-    for e in dic_routes.keys():
-        dic_routes.get(e)
+def updateDictionaryD(current,dic):
+    arrets=current.get_lst_arrets_suivant()
+    for s in arrets:
+        newD=dic[current]+1
+        if newD<dic[s]:
+            dic[s]=newD
+    return dic
+
+def getNewCurrent(listArret,dicShort):
+    nextCurrent=listArret[0]
+    nextCurrentD=dicShort[nextCurrent]
+    for s in listArret:
+        if dicShort[s]<nextCurrentD:
+            nextCurrent=s
+            nextCurrentD=dicShort[s]
+    return nextCurrent
