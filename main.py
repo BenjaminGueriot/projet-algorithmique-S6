@@ -48,7 +48,8 @@ for arret in dic_ligne.get("Ligne2_back").get_Lst_Arret():
 
 Sybra = Reseau(list(dic_ligne.values()))
 
-dico = Sybra.shortestDijkstra(dic_arret.get("GARE"),dic_arret.get("VIGNIÃˆRES"))
+#dico = Sybra.shortestDijkstra(dic_arret.get("GARE"),dic_arret.get("VIGNIÃˆRES"))
+dico = Sybra.fastestDijkstra(dic_arret.get("GARE"),dic_arret.get("VIGNIÃˆRES"),"special","7:10")
 
 print(dico[1])
 
