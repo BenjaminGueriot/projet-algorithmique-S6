@@ -19,25 +19,6 @@ for files in lst_files:
     dic_ligne = dic["dic_ligne"]
 
 
-
-#print((dic_arret.get("GARE")).get_lst_arrets_suivant().get("1_back").get_nom())
-
-#print((dic_arret.get("GARE")).get_arret_suivant(dic_ligne.get("Ligne2_back")).get_nom())
-
-#print(dic_arret.get("GARE").get_horaire("special_go",1))
-#print(dic_arret.get("GARE").get_horaire("regular_go",1))
-#print(Method.hdigit2min(dic_arret.get("GARE").get_horaire("regular_go",2)[5]))
-
-"""
-for arret in dic_ligne.get("Ligne2_back").get_Lst_Arret():
-    print(arret.get_nom())
-"""
-
-#print(dic_ligne)
-
-#print(dic_ligne.get("Ligne1").get_Lst_Arret()[0].is_leaf(dic_ligne.get("Ligne1")))
-
-
 #date = int(str(datetime.date(datetime.now()))[5:7] + str(datetime.date(datetime.now()))[8:10])
 #print(Method.is_holiday(date))
 
@@ -47,8 +28,10 @@ for arret in dic_ligne.get("Ligne2_back").get_Lst_Arret():
 
 Sybra = Reseau(list(dic_ligne.values()))
 
-dico = Sybra.shortestDijkstra(dic_arret.get("CAMPUS"),dic_arret.get("Vernod"))
-#dico = Sybra.fastestDijkstra(dic_arret.get("Place_des_Romains"),dic_arret.get("Ponchy"),"special","7:10")
+dico_short = Sybra.shortestDijkstra(dic_arret.get("Vernod"),dic_arret.get("CAMPUS"))
+dico_fast = Sybra.fastestDijkstra(dic_arret.get("Vernod"),dic_arret.get("CAMPUS"),"special","7:10")
+dico_foremost = Sybra.foremostDijkstra(dic_arret.get("Vernod"),dic_arret.get("CAMPUS"),"regular","7:10")
 
-print(dico)
+print(dico_short)
+print(dico_fast)
 
