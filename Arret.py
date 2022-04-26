@@ -29,6 +29,9 @@ class Arret :
                 list(self.lst_arret_suivant.values())
         return list(self.lst_arret_suivant.values())
 
+    def get_dic_arrets_suivant(self):
+        return self.lst_arret_suivant
+
     def get_arret_suivant(self,ligne):
 
         if ligne.direction == "back":
@@ -59,6 +62,7 @@ class Arret :
         if(periode == "special_go"):
             return self.dic_horaire.get("Ligne"+ str(ligne)).get("special_go")
         if(periode == "special_back"):
+            print(self.dic_horaire.get("Ligne"+ str(ligne)).get("special_back"))
             return self.dic_horaire.get("Ligne"+ str(ligne)).get("special_back")
 
         return None
