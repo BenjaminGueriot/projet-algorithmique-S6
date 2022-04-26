@@ -29,6 +29,9 @@ class Arret :
                 list(self.lst_arret_suivant.values())
         return list(self.lst_arret_suivant.values())
 
+    def get_dic_arrets_suivant(self):
+        return self.lst_arret_suivant
+
     def get_arret_suivant(self,ligne):
 
         if ligne.direction == "back":
@@ -62,31 +65,3 @@ class Arret :
             return self.dic_horaire.get("Ligne"+ str(ligne)).get("special_back")
 
         return None
-    
-    def father(self,Ligne):
-
-        for n in Ligne.Lst_Arret:
-            if self in n.lst_arret_suivant  :
-                return n
-        return None
-
-    def is_leaf(self,ligne):
-
-        lst_arrets = []
-        if ligne.direction == "back":
-            for i in range(0,len(self.lst_arret_suivant.keys())):
-                if self.lst_arret_suivant.get(str((ligne.numero+i))+"_back"):
-                    lst_arrets.append(self.lst_arret_suivant.get(str((ligne.numero+i))+"_back"))
-            if lst_arrets == []:
-                return True
-            else:
-                return False
-
-        if ligne.direction == "go":
-            for i in range(0,len(self.lst_arret_suivant.keys())):
-                if self.lst_arret_suivant.get(str((ligne.numero+i))):
-                    lst_arrets.append(self.lst_arret_suivant.get(str((ligne.numero+i))))
-            if lst_arrets == []:
-                return True
-            else:
-                return False

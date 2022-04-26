@@ -22,25 +22,7 @@ def hdigit2min(heure):
     else:
         heurefin = heure[0]
         minfin = heure[2:]
-    
-    return int(60*int(heurefin) + int(minfin))
-
-def updateDictionaryD(current,dic):
-    arrets=current.get_lst_arrets_suivant()
-    for s in arrets:
-        newD=dic[current]+1
-        if newD<dic[s]:
-            dic[s]=newD
-    return dic
-
-def getNewCurrent(listArret,dicShort):
-    nextCurrent=listArret[0]
-    nextCurrentD=dicShort[nextCurrent]
-    for s in listArret:
-        if dicShort[s]<nextCurrentD:
-            nextCurrent=s
-            nextCurrentD=dicShort[s]
-    return nextCurrent
+    return 60*int(heurefin) + int(minfin)
 
 def merge_two_dicts(x, y):
         z = x.copy()

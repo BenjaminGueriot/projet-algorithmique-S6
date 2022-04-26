@@ -43,13 +43,12 @@ for arret in dic_ligne.get("Ligne2_back").get_Lst_Arret():
 
 #dic_ligne.get("Ligne2").get_all_path(dic_ligne,dic_arret.get("Courier"),dic_arret.get("Ponchy"))
 
-
 #print(dic_ligne.get("Ligne1").time_between_arret(406,dic_arret.get("Vernod"),"regular_back"))
 
 Sybra = Reseau(list(dic_ligne.values()))
 
-dico = Sybra.shortestDijkstra(dic_arret.get("GARE"),dic_arret.get("VIGNIÃˆRES"))
+dico = Sybra.shortestDijkstra(dic_arret.get("CAMPUS"),dic_arret.get("Vernod"))
+#dico = Sybra.fastestDijkstra(dic_arret.get("Place_des_Romains"),dic_arret.get("Ponchy"),"special","7:10")
 
-print(dico[1])
-
+print(dico)
 
