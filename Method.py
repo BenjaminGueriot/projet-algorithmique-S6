@@ -22,8 +22,7 @@ def hdigit2min(heure):
     else:
         heurefin = heure[0]
         minfin = heure[2:]
-    
-    return int(60*int(heurefin) + int(minfin))
+    return 60*int(heurefin) + int(minfin)
 
 def updateDictionaryD(current,dic):
     arrets=current.get_lst_arrets_suivant()
