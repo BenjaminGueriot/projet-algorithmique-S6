@@ -41,3 +41,8 @@ def getNewCurrent(listArret,dicShort):
             nextCurrent=s
             nextCurrentD=dicShort[s]
     return nextCurrent
+
+def merge_two_dicts(x, y):
+        z = x.copy()
+        z.update(y)
+        return z
