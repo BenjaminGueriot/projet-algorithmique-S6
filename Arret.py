@@ -55,13 +55,15 @@ class Arret :
                                                                 "special_back" : h_special_back }
 
     def get_horaire(self,periode,ligne):
-        if(periode == "regular_go"):
-            return self.dic_horaire.get("Ligne"+ str(ligne)).get("regular_go")
-        if(periode == "regular_back"):
-            return self.dic_horaire.get("Ligne"+ str(ligne)).get("regular_back")
-        if(periode == "special_go"):
-            return self.dic_horaire.get("Ligne"+ str(ligne)).get("special_go")
-        if(periode == "special_back"):
-            return self.dic_horaire.get("Ligne"+ str(ligne)).get("special_back")
+        if self.dic_horaire.get("Ligne"+ str(ligne)) != None:
+
+            if(periode == "regular_go"):
+                return self.dic_horaire.get("Ligne"+ str(ligne)).get("regular_go")
+            if(periode == "regular_back"):
+                return self.dic_horaire.get("Ligne"+ str(ligne)).get("regular_back")
+            if(periode == "special_go"):
+                return self.dic_horaire.get("Ligne"+ str(ligne)).get("special_go")
+            if(periode == "special_back"):
+                return self.dic_horaire.get("Ligne"+ str(ligne)).get("special_back")
 
         return None
