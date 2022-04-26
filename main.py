@@ -48,7 +48,7 @@ for arret in dic_ligne.get("Ligne2_back").get_Lst_Arret():
 
 Sybra = Reseau(list(dic_ligne.values()))
 
-dico = Sybra.shortestDijkstra(dic_arret.get("Courier"),dic_arret.get("Ponchy"))
+dico = Sybra.shortestDijkstra(dic_arret.get("PARC_DES_GLAISINS"),dic_arret.get("LYCÃ‰E_DE_POISY"))
 
 
 print(dico)
@@ -58,3 +58,5 @@ for e in dico.keys():
     print(e.get_nom())
     print(dico.get(e))
 """
+
+
