@@ -90,10 +90,6 @@ class Reseau:
                 for line in self.Lignesfor1Arret(elem):
                     if e in line.lst_Arret:
                         if elem.get_arret_suivant(line) == e:
-                            print("ligne : " + line.ArretDepart.nom)
-                            print(ligne.numero)
-                            print(elem.nom)
-                            print(e.nom)
                             new_periode = periode + "_" + line.direction
 
                 if dic != {}:
@@ -101,7 +97,6 @@ class Reseau:
                 else:
                     dic = {e.get_nom() : ligne.time_between_arret(heure,e,new_periode)}
                 heure += ligne.time_between_arret(heure,e,new_periode)
-                print(dic)
                 dg[elem.get_nom()] = dic
 
         s_connu ={start.get_nom() : [0, [start.get_nom()]]}
