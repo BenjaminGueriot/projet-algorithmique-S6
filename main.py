@@ -11,7 +11,7 @@ lst_files = ['1_Poisy-ParcDesGlaisins.txt','2_Piscine-Patinoire_Campus.txt']
 
 
 
-def showStops():
+def showArrets():
 
     for arret in dic_arret.values():
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     print("Voici la liste des arrêts : ")
 
-    showStops()
+    showArrets()
 
     print('Choisissez un arrêt de départ : ')
     arretdebut = input()
@@ -48,11 +48,6 @@ if Method.is_holiday(date) == True:
     periode = 'special'
 if Method.is_holiday(date) == False:
     periode = 'regular'
-        
-
-#dic_ligne.get("Ligne2").get_all_path(dic_ligne,dic_arret.get("Courier"),dic_arret.get("Ponchy"))
-
-#print(dic_ligne.get("Ligne1").time_between_arret(406,dic_arret.get("Vernod"),"regular_back"))
 
 Sybra = Reseau(list(dic_ligne.values()))
 
