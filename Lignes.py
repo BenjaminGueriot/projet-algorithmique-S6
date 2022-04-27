@@ -55,7 +55,7 @@ class Lignes:
     def time_between_arret(self,heure,arret1,periode):
        
         arret2 = arret1.get_arret_suivant(self)
-        print(arret1.get_nom(),arret2.get_nom())
+        #print(arret1.get_nom(),arret2.get_nom())
         time1 = self.nextBus(arret1,heure,periode)
         time2 = self.nextBus(arret2,self.nextBus(arret1,heure,periode),periode)
 
@@ -65,7 +65,7 @@ class Lignes:
 
     def time_between_arrets(self,heure,arret1,arret2,periode):
         
-        print(arret1.get_nom(),arret2.get_nom())
+        #print(arret1.get_nom(),arret2.get_nom())
         time1 = self.nextBus(arret1,heure,periode)
         time2 = self.nextBus(arret2,self.nextBus(arret1,heure,periode),periode)
 
@@ -75,5 +75,5 @@ class Lignes:
         
         time = time2 - time1        
               
-        print(Method.min2hdigit(time2),Method.min2hdigit(time1),time)
+        #print(Method.min2hdigit(time2),Method.min2hdigit(time1),time)
         return time
