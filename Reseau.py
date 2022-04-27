@@ -23,13 +23,6 @@ class Reseau:
                 res.append(stop)
                 stop=stop.get_arret_suivant(e)
         return res
-
-    def initDicShort(self):
-        res={}
-        for e in self.getAllArrets():
-            res[e]=inf
-        return res
-    
     
     def shortestDijkstra(self,start,end):
 
@@ -71,12 +64,12 @@ class Reseau:
 
         #init
         dg = {}
+        init = 0
         heure = Method.hdigit2min(heure)
         for elem in self.getAllArrets():
             dic = {}
             for e in elem.get_lst_arrets_suivant():
                 poids = 0
-
                 i = 0
                 if len(self.Lignesfor1Arret(elem)) != 1:
                     
@@ -92,18 +85,24 @@ class Reseau:
                         if elem.get_arret_suivant(line) == e:
                             new_periode = periode + "_" + line.direction
 
+                if(elem == start):
+                    poids = ligne.time_between_arrets(heure,elem,e,new_periode)
+                    init = 1
+                elif(init > 0):
+                    poids = ligne.time_between_arrets(heure,elem,e,new_periode)
+
                 if dic != {}:
-                    dic = md.merge_two_dicts(dg.get(elem.get_nom()),{e.get_nom() : ligne.time_between_arret(heure,e,new_periode)})
+                    dic = md.merge_two_dicts(dg.get(elem.get_nom()),{e.get_nom() : poids})
                 else:
-                    dic = {e.get_nom() : ligne.time_between_arret(heure,e,new_periode)}
+                    dic = {e.get_nom() : poids}
                 dg[elem.get_nom()] = dic
-            heure += ligne.time_between_arret(heure,e,new_periode)
+            heure += poids
 
         s_connu ={start.get_nom() : [0, [start.get_nom()]]}
         s_inconnu = {k : [inf,""] for k in dg if k != start.get_nom()}
         for suivant in dg[start.get_nom()]:
             s_inconnu[suivant] = [dg[start.get_nom()][suivant],start.get_nom()]
-        
+
         #recherche
 
         while s_inconnu and any(s_inconnu[k][0] < inf for k in s_inconnu):
@@ -121,7 +120,6 @@ class Reseau:
                 break
 
         return s_connu[end.get_nom()]
-
 
 
     def foremostDijkstra(self,start,end,periode,heure):
@@ -150,11 +148,11 @@ class Reseau:
                         if elem.get_arret_suivant(line) == e:
                             new_periode = periode + "_" + line.direction
 
-                if(init ==0):
-                    poids = ligne.time_between_arret(heure,e,new_periode)
+                if(elem == start):
+                    poids = ligne.time_between_arrets(heure,elem,e,new_periode) + (ligne.nextBus(elem,heure,new_periode) - heure)
                     init = 1
                 if(init > 0):
-                    poids = ligne.time_between_arret(heure,e,new_periode)
+                    poids = ligne.time_between_arrets(heure,elem,e,new_periode)
 
 
                 if dic != {}:
@@ -164,7 +162,7 @@ class Reseau:
                 
                 dg[elem.get_nom()] = dic
             heure += poids
-
+ 
         s_connu ={start.get_nom() : [0, [start.get_nom()]]}
         s_inconnu = {k : [inf,""] for k in dg if k != start.get_nom()}
         for suivant in dg[start.get_nom()]:
