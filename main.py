@@ -11,7 +11,7 @@ lst_files = ['1_Poisy-ParcDesGlaisins.txt','2_Piscine-Patinoire_Campus.txt']
 
 
 
-def showStops():
+def showArrets():
 
     for arret in dic_arret.values():
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     print("Voici la liste des arrêts : ")
 
-    showStops()
+    showArrets()
 
     print('Choisissez un arrêt de départ : ')
     arretdebut = input()
@@ -42,20 +42,18 @@ if __name__ == '__main__':
     print('Choisissez une heure de départ (format hh:mm): ')
     heure = input()
 
-
-#date = int(str(datetime.date(datetime.now()))[5:7] + str(datetime.date(datetime.now()))[8:10])
-#print(Method.is_holiday(date))
-
-#dic_ligne.get("Ligne2").get_all_path(dic_ligne,dic_arret.get("Courier"),dic_arret.get("Ponchy"))
-
-#print(dic_ligne.get("Ligne1").time_between_arret(406,dic_arret.get("Vernod"),"regular_back"))
+date  = int(str(datetime.date(datetime.now()))[5:7] + str(datetime.date(datetime.now()))[8:10])
+if Method.is_holiday(date) == True:
+    periode = 'special'
+if Method.is_holiday(date) == False:
+    periode = 'regular'
 
 Sybra = Reseau(list(dic_ligne.values()))
 
 dico_short = Sybra.shortestDijkstra(dic_arret.get(arretdebut),dic_arret.get(arretfin))
-dico_fast = Sybra.fastestDijkstra(dic_arret.get(arretdebut),dic_arret.get(arretfin),"regular",heure)
-dico_foremost = Sybra.foremostDijkstra(dic_arret.get(arretdebut),dic_arret.get(arretfin),"regular",heure)
+dico_fast = Sybra.fastestDijkstra(dic_arret.get(arretdebut),dic_arret.get(arretfin),periode,heure)
+dico_foremost = Sybra.foremostDijkstra(dic_arret.get(arretdebut),dic_arret.get(arretfin),periode,heure)
 
-print("shortest path : ",dico_short[1] ,"en ",dico_short[0],"arrets")
-print("fastest path : ",dico_fast[1],"en ",dico_fast[0],"minutes")
-print("foremost path : ",dico_foremost[1],"en ",dico_foremost[0],"minutes")
+print("shortest path : ",dico_short[1])
+print("fastest path : ",dico_fast[1])
+print("foremost path : ",dico_foremost[1])

@@ -51,18 +51,6 @@ class Lignes:
 
         return time
 
-
-    def time_between_arret(self,heure,arret1,periode):
-       
-        arret2 = arret1.get_arret_suivant(self)
-        #print(arret1.get_nom(),arret2.get_nom())
-        time1 = self.nextBus(arret1,heure,periode)
-        time2 = self.nextBus(arret2,self.nextBus(arret1,heure,periode),periode)
-
-        time = time2 - time1
-        
-        return time
-
     def time_between_arrets(self,heure,arret1,arret2,periode):
         
         #print(arret1.get_nom(),arret2.get_nom())

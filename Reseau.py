@@ -150,7 +150,7 @@ class Reseau:
                             new_periode = periode + "_" + line.direction
 
                 if(elem == start):
-                    poids = (ligne.time_between_arrets(heure,elem,e,new_periode) + (ligne.nextBus(start,initheure,new_periode) + initheure))
+                    poids = (ligne.time_between_arrets(heure,elem,e,new_periode) + (ligne.nextBus(start,initheure,new_periode) - initheure))
                     init = 1
                 if(init > 0):
                     poids = ligne.time_between_arrets(heure,elem,e,new_periode)
