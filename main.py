@@ -42,7 +42,6 @@ if __name__ == '__main__':
     print('Choisissez une heure de départ (format hh:mm): ')
     heure = input()
 
-
 date  = int(str(datetime.date(datetime.now()))[5:7] + str(datetime.date(datetime.now()))[8:10])
 if Method.is_holiday(date) == True:
     periode = 'special'
