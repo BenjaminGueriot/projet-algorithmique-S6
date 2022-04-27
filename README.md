@@ -22,7 +22,7 @@ L'objectif est de trouver 3 chemins entre 2 arrêts :
 ---
 ## Utilisation
 
-Une fois le fichier main.py executé, 3 arguments sont demandés:
+Une fois le fichier main.py executé, 3 arguments sont demandés :
 - L'arrêt de départ
 - L'arrêt d'arrivée:
 - l'heure de départ `hh:mm`
