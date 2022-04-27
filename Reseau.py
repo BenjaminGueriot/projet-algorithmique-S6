@@ -149,14 +149,14 @@ class Reseau:
                             new_periode = periode + "_" + line.direction
 
                 if(elem == start):
-                    poids = ligne.time_between_arrets(heure,elem,e,new_periode) + (ligne.nextBus(elem,heure,new_periode) - heure)
+                    poids = ligne.time_between_arrets(heure,elem,e,new_periode)
                     init = 1
                 if(init > 0):
                     poids = ligne.time_between_arrets(heure,elem,e,new_periode)
 
-
+                print(ligne.nextBus(elem,heure,new_periode) - heure)
                 if dic != {}:
-                    dic = md.merge_two_dicts(dg.get(elem.get_nom()),{e.get_nom() : poids})
+                    dic = md.merge_two_dicts(dg.get(elem.get_nom()),{e.get_nom() : poids + (ligne.nextBus(elem,heure,new_periode) - heure)})
                 else:
                     dic = {e.get_nom() : poids}
                 
