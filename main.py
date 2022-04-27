@@ -9,33 +9,38 @@ from Reseau import *
 
 lst_files = ['1_Poisy-ParcDesGlaisins.txt','2_Piscine-Patinoire_Campus.txt']
 
-dic_arret ={}
-nb_ligne = 0
-for files in lst_files:
-    nb_ligne += 1
-    data = d2p.read_data(files)
-    dic = CA.creation_arrets(data, dic_arret,nb_ligne)
-    dic_arret = dic["dic_arret"]
-    dic_ligne = dic["dic_ligne"]
 
 
+def showStops():
 
-#print((dic_arret.get("GARE")).get_lst_arrets_suivant().get("1_back").get_nom())
+    for arret in dic_arret.values():
 
-#print((dic_arret.get("GARE")).get_arret_suivant(dic_ligne.get("Ligne2_back")).get_nom())
+        print("{}".format(arret.nom))
 
-#print(dic_arret.get("GARE").get_horaire("special_go",1))
-#print(dic_arret.get("GARE").get_horaire("regular_go",1))
-#print(Method.hdigit2min(dic_arret.get("GARE").get_horaire("regular_go",2)[5]))
 
-"""
-for arret in dic_ligne.get("Ligne2_back").get_Lst_Arret():
-    print(arret.get_nom())
-"""
+if __name__ == '__main__':
 
-#print(dic_ligne)
+    dic_arret ={}
+    nb_ligne = 0
+    for files in lst_files:
+        nb_ligne += 1
+        data = d2p.read_data(files)
+        dic = CA.creation_arrets(data, dic_arret,nb_ligne)
+        dic_arret = dic["dic_arret"]
+        dic_ligne = dic["dic_ligne"]
 
-#print(dic_ligne.get("Ligne1").get_Lst_Arret()[0].is_leaf(dic_ligne.get("Ligne1")))
+    print("Voici la liste des arrêts : ")
+
+    showStops()
+
+    print('Choisissez un arrêt de départ : ')
+    arretdebut = input()
+
+    print('Choisissez un arrêt d\'arrivée : ')
+    arretfin = input()
+
+    print('Choisissez une heure de départ (format hh:mm): ')
+    heure = input()
 
 
 #date = int(str(datetime.date(datetime.now()))[5:7] + str(datetime.date(datetime.now()))[8:10])
@@ -47,8 +52,10 @@ for arret in dic_ligne.get("Ligne2_back").get_Lst_Arret():
 
 Sybra = Reseau(list(dic_ligne.values()))
 
-dico = Sybra.shortestDijkstra(dic_arret.get("CAMPUS"),dic_arret.get("Vernod"))
-#dico = Sybra.fastestDijkstra(dic_arret.get("Place_des_Romains"),dic_arret.get("Ponchy"),"special","7:10")
+dico_short = Sybra.shortestDijkstra(dic_arret.get(arretdebut),dic_arret.get(arretfin))
+dico_fast = Sybra.fastestDijkstra(dic_arret.get(arretdebut),dic_arret.get(arretfin),"regular",heure)
+dico_foremost = Sybra.foremostDijkstra(dic_arret.get(arretdebut),dic_arret.get(arretfin),"regular",heure)
 
-print(dico)
-
+print("shortest path : ",dico_short[1] ,"en ",dico_short[0],"arrets")
+print("fastest path : ",dico_fast[1],"en ",dico_fast[0],"minutes")
+print("foremost path : ",dico_foremost[1],"en ",dico_foremost[0],"minutes")

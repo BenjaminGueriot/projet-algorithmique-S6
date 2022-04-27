@@ -24,6 +24,14 @@ def hdigit2min(heure):
         minfin = heure[2:]
     return 60*int(heurefin) + int(minfin)
 
+def min2hdigit(minutes):
+    heure = int(minutes/60)
+    minutes = minutes%60
+    if minutes < 10:
+        return str(heure) + ":0" + str(minutes)
+    else:
+        return str(heure) + ":" + str(minutes)
+
 def merge_two_dicts(x, y):
         z = x.copy()
         z.update(y)
