@@ -156,7 +156,7 @@ class Reseau:
                     poids = ligne.time_between_arrets(heure,elem,e,new_periode)
 
                 if dic != {}:
-                    print(ligne.nextBus(start,initheure,new_periode))
+                    #print(ligne.nextBus(start,initheure,new_periode))
                     dic = md.merge_two_dicts(dg.get(elem.get_nom()),{e.get_nom() : poids})
                 else:
                     dic = {e.get_nom() : poids}
