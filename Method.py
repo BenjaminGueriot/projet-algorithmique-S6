@@ -1,4 +1,4 @@
-from datetime import datetime,weekday
+from datetime import datetime
 
 lst_date_holidays = [1019,1104,1221,1231,101,106,222,309,418,504,704,901]
                     #Vacances toussaint, noel partie decembre,noel partie janvier, hiver , printemps,Ete
@@ -14,7 +14,7 @@ def is_holiday(date):
 
     date2 = datetime.today()
 
-    if (date2.weekend() == True):
+    if (date2.weekday() == True):
         return True
     
     return False
