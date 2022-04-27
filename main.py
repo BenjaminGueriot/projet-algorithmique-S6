@@ -29,9 +29,9 @@ for files in lst_files:
 Sybra = Reseau(list(dic_ligne.values()))
 
 dico_short = Sybra.shortestDijkstra(dic_arret.get("Vernod"),dic_arret.get("CAMPUS"))
-dico_fast = Sybra.fastestDijkstra(dic_arret.get("Vernod"),dic_arret.get("CAMPUS"),"special","7:10")
+dico_fast = Sybra.fastestDijkstra(dic_arret.get("Vernod"),dic_arret.get("CAMPUS"),"regular","7:10")
 dico_foremost = Sybra.foremostDijkstra(dic_arret.get("Vernod"),dic_arret.get("CAMPUS"),"regular","7:10")
 
 print(dico_short)
 print(dico_fast)
-
+print(dico_foremost)
