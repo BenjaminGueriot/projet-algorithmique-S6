@@ -31,5 +31,5 @@ Une fois le fichier main.py executé, 3 arguments sont demandés:
 
 Cloner le projet dans un repertoire : 
 
-`git  clone https://github.com/BenjaminGueriot/projet-algorithmique-S6
+`git  clone https://github.com/BenjaminGueriot/projet-algorithmique-S6'
 .
