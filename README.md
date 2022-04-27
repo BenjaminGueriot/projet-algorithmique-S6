@@ -1,4 +1,4 @@
-# projet-algorithmique-S6
+# Projet algorithmique S6
 Projet Algorithmique
 
 ### Sommaire 
