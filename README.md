@@ -13,7 +13,7 @@ Ce programme a été réalisé dans le cadre de ma formation à Polytech Annecy-
 
 Ce programme est construit a partir d'un réseau de bus contenu dans 2 fichier. (1_Poisy-ParcDesGlaisins.txt and 2_Piscine-Patinoire_Campus.txt).
 
-L'objectif est de trouver 3 chemins entre 2 arrêts
+L'objectif est de trouver 3 chemins entre 2 arrêts :
 
 - Shortest : le plus court, en nombre d’arc
 - Fastest : le plus rapide, mais avec potentiellement plus d’arc 
